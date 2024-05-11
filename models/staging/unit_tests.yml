@@ -1,0 +1,38 @@
+
+unit_tests:
+  - name: validate_email_domain
+    model: stg_customers
+    given:
+      - input: ref('customers')
+        format: csv
+        fixture: validate_email_domain__input
+    expect:
+      format: csv
+      fixture: validate_email_domain__output
+
+  - name: validate_customer_name
+    model: stg_customers
+    given:
+      - input: ref('customers')
+        format: dict
+        rows: 
+          - {first_name: 'Harry', last_name: 'Styles'}
+          - {first_name: 'Johnny ', last_name: 'Depp '}
+          - {first_name: 'Cher', last_name: ' '}
+          - {first_name: 'Lana Del', last_name: 'Rey'}
+          - {first_name: '', last_name: ''}
+          - {first_name: null, last_name: null}
+          - {first_name: 'Jenny', last_name: null}
+          - {first_name: null, last_name: 'Doe'}
+
+    expect:
+        format: dict
+        rows: 
+          - {customer_name: 'Harry Styles'}
+          - {customer_name: 'Johnny Depp'}
+          - {customer_name: 'Cher'}
+          - {customer_name: 'Lana Del Rey'}
+          - {customer_name: null}
+          - {customer_name: null}
+          - {customer_name: 'Jenny'}
+          - {customer_name: 'Doe'}

@@ -1,0 +1,6 @@
+CUSTOMER_ID,CUSTOMER_NAME,CUSTOMER_EMAIL,EMAIL_DOMAIN,CUSTOMER_GENDER,IP_ADDRESS,CUSTOMER_REGION
+,,john@gmail.com,gmail.com,,
+,,john@smith@gmail.com,gmail.com,,
+,,john.smith@gmail.com,gmail.com,,
+,,@gmail.com,gmail.com,,
+,,gmail.com,,,
